@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1566587939274.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2493555228",
+    "id" : "15D18C09",
+    "lastKnownWriteTime" : 1556210939,
+    "last_content_update" : 1556210939,
+    "path" : "~/Desktop/Data_Course_WILLIAMS/Final_Project_2/Shiny_app/Shiny1.R",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "49,13",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

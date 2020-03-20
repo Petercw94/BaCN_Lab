@@ -1,0 +1,7 @@
+"0","for(i in 0:5) {
+  xcoords[i+1] = r*cos(i*angbtwn)
+  ycoords[i+1] = r*sin(i*angbtwn)
+}
+"
+"2","Error in r : object 'r' not found
+"

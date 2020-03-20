@@ -1,0 +1,8 @@
+library(tidyverse)
+
+df = read.csv("../../Summer_2019/Anatomy_grading/Concept_map_1_terms.csv")
+glimpse(df)
+
+
+df = read.csv("../../Summer_2019/Anatomy_grading/concept_map_2_terms.csv")
+glimpse(df)

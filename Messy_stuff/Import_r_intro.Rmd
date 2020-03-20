@@ -1,0 +1,61 @@
+---
+title: "eye_tracking_data"
+author: "pwilliams"
+date: "2/5/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r include=FALSE}
+library(tidyverse)
+library(ggplot2)
+library(readr)
+```
+
+# Analyzing your Eye Tracker Data in R
+
+The first step to analyzing any of your data in R Studio will be importing your data. Depending on the extension format of your data, this will require different steps. For the purpose of this guide, data will be entered in from SPSS in a .sav format (typical SPSS formatting) and a .edf format (typical format for our eye-tracking data)  
+
+**Importing .sav Files**
+
+In order to import a .sav file, you will need to install the *foreign* package:
+
+```{r echo=TRUE}
+library(foreign)
+```
+
++ If the *foreign* package is not already in your Rstudio library, you will need to install it under the package tab in studio. 
+
+Once the package is installed, you now have access to the function we will be using to read in our SPSS .sav file: read.spss(). To read in your file:
+
+```{r echo=TRUE}
+df = as.data.frame(read.spss("../../Downloads/shape_35_fdur_means.sav"))
+# df = is a simple way of storing our imported data under an easy to remember name (df for data frame)
+# The as.data.frame() argument ensures that your document will be read in as a dataframe, making it easier to analyze.
+# If the file you are tring to import is not located in your current working directory, you will need to set your working directory within the quotations.
+```
+
+```{r include=FALSE}
+df$SUBJECT = as.factor(df$SUBJECT)
+```
+
+
+
+Once we have our data in R, we can start to examine it:
+
+```{r}
+head(df) # The head() function allows us to view the first 6 rows of our data frame
+tail(df)# The tails() function allows us to view the last 6 rows of our data frame
+
+glimpse(df) # The glimpse() function provides the class of data within each of our columns (or variables in r)
+```
+
+Once we know what levels of data our variables are, we can begin visualizing the data through plots:
+
+```{r}
+ggplot(df, aes(x=SacIn, y=SFixDur)) +
+  geom_point(aes(color=SUBJECT))
+```

@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1571765071693.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "4C40656F",
+    "lastKnownWriteTime" : 1571841217,
+    "last_content_update" : 1571841217912,
+    "path" : "~/Desktop/BACN_Lab/Practice_R/Shiny_fantasy_football_number.R",
+    "project_path" : "Shiny_fantasy_football_number.R",
+    "properties" : {
+        "cursorPosition" : "32,34",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

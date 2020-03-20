@@ -1,0 +1,158 @@
+---
+title: "Prevalence_Concept_Threshold_Variables"
+author: "pwilliams"
+date: "3/29/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+library(modelr)
+```
+# Variables
+
+## These are some variables for determining diameter of stimuli circle  
+
++ **Convert angle of diameter(3.7º) to centimeters:**  
+
+```{r echo=TRUE, message=FALSE, warning=FALSE, paged.print=TRUE}
+x = 184*tan(1.35*(pi/180))
+paste(x,"cm")
+```
+
++ **There is an imaginary inner circle upon which individual stimuli are evenly placed. Convert angle of diameter (12.6) for the inner circle to centimeters:**
+
+```{r}
+x1 = 92*tan(12.6*(pi/180))
+paste(x1,"cm")
+```
+
++ **There are 6 circles surrounding the center circle, which means each stimulus circle has its own respective coordinate on the imaginary circle.:**
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+angbtwn = 2*pi/6 # in radians
+xcoords = c()
+ycoords = c()
+for(i in 0:5) {
+  xcoords[i+1] = x1*cos(i*angbtwn)
+  ycoords[i+1] = x1*sin(i*angbtwn)
+}
+coords = cbind(xcoords, ycoords)
+coords
+```
+
+### Determining variablility of our stimuli color:  
+
+* 60.8%- 99.6% Blue   
+  + Middle = 50-0-205, 80.3%   
+  + +/- 19.3%    
+* **Low** = -5, -5, -2, 2, 5, 5  
+  + *Mid Shift* = -14.3% -14.3%
+* **Mid** = -10, -8, -4, 4, 8, 10  
+  + *Mid Shift* = -9.3% - 9.3% 
+* **High** = -15, -13, -10, 10, 13, 15  
+  + *Mid Shift* = -4.3% - 4.3 %  
+  
+**Trials**
+900 trials, 18 blocks of 50:  
+ + 300 low  
+ + 300 mid  
+ + 300 high
+ 
+ 
+### Target Stimuli
+
+Purple|Blue
+------|-----
+100-0-155 (60.8% Blue)| 50-0-205 (80.3% Blue)
+51-0-204 (80% Blue) | 1-0-254 (99.6% Blue)
+
+
+### RGB values for our target stimuli:
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+my_colors = read.csv("./Practice_R/mycolors.csv")
+head(my_colors)
+tail(my_colors)
+```
+
+Set the low variability blue values
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+# determine coordinates to set ranges for low variability ####
+k = c()
+for(i in 0:7) {
+  k = c(k,i*(99/7) + 155)
+}
+k = round(k, 0)
+# determine the ranges of blue values for the low variability 
+low.v.blue.val = data.frame(Min = k[1:7], Max = k[2:8])
+low.v.blue.val = mutate(low.v.blue.val, int.range = (Max - Min)/6)
+# make min and max columns one and two
+colnames(low.v.blue.val)[1] = "B1"
+colnames(low.v.blue.val)[2] = "B6"
+# add in outer stimuli columns 
+low.v.blue.val$B2 = low.v.blue.val$B1 + low.v.blue.val$int.range
+low.v.blue.val$B3 = low.v.blue.val$B2 + low.v.blue.val$int.range
+low.v.blue.val$B4 = low.v.blue.val$B3 + low.v.blue.val$int.range  
+low.v.blue.val$B5 = low.v.blue.val$B4 + low.v.blue.val$int.range
+# re-order the data set
+low.v.blue.val = low.v.blue.val[,-3]
+low.v.blue.val = low.v.blue.val[c(1,3:6,2)]
+# round the values
+low.v.blue.val = round(low.v.blue.val, 0)
+
+low.v.blue.val
+```
+Set the mid variability blue values
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+m = c()
+for(i in 0:5) {
+  m = c(m,i*(99/5) + 155)
+}
+m = round(m, 0)
+# determine the ranges of blue values for the low variability 
+mid.v.blue.val = data.frame(Min = m[1:5], Max = m[2:6])
+mid.v.blue.val = mutate(mid.v.blue.val, int.range = (Max - Min)/6)
+# make Min -> B1
+colnames(mid.v.blue.val)[1] = "B1"
+# add in outer stimuli columns 
+mid.v.blue.val$B2 = mid.v.blue.val$B1 + mid.v.blue.val$int.range
+mid.v.blue.val$B3 = mid.v.blue.val$B2 + mid.v.blue.val$int.range
+mid.v.blue.val$B4 = mid.v.blue.val$B3 + mid.v.blue.val$int.range  
+mid.v.blue.val$B5 = mid.v.blue.val$B4 + mid.v.blue.val$int.range
+# make min and max columns one and two
+colnames(mid.v.blue.val)[2] = "B6"
+# re-order the data set
+mid.v.blue.val = mid.v.blue.val[,-3]
+mid.v.blue.val = mid.v.blue.val[c(1,3:5,2)]
+mid.v.blue.val = round(mid.v.blue.val, 0)
+mid.v.blue.val
+```
+Set the high variability blue values
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# set high variability blue values ####
+B1min = 155
+B1max = 155 + .5*99
+B2min = 155 + .25*99
+B2max = 155 + .75*99
+B3min = 155 + .5*99
+B3max = 254
+
+high.v.blue.val = data.frame(B1 = c(B1min, B2min, B3min), B6 = c(B1max, B2max, B3max))
+high.v.blue.val = mutate(high.v.blue.val, int.range = (B6 - B1)/6)
+# add in outer stimuli columns 
+high.v.blue.val$B2 = high.v.blue.val$B1 + high.v.blue.val$int.range
+high.v.blue.val$B3 = high.v.blue.val$B2 + high.v.blue.val$int.range
+high.v.blue.val$B4 = high.v.blue.val$B3 + high.v.blue.val$int.range  
+high.v.blue.val$B5 = high.v.blue.val$B4 + high.v.blue.val$int.range
+
+# re-order the data set
+high.v.blue.val = high.v.blue.val[,-3]
+high.v.blue.val = high.v.blue.val[c(1,3:5,2)]
+high.v.blue.val = round(high.v.blue.val, 0)
+high.v.blue.val
+```

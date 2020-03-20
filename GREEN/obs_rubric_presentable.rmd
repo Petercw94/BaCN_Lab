@@ -1,0 +1,82 @@
+---
+title: "Observation Rubric"
+author: "pwilliams"
+date: "2/7/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Observation Rubric
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+library(readxl)
+read_xlsx("~/Downloads/Obs_rubric_draft_CJ comments.xlsx") -> df
+df2 = df[,-6]
+df2
+```
+
+Below is a more detailed account of the qualifiers for each of the observed items in the rubric.
+
+**Personal Examples**
+
+Faculty mentor uses personal examples or experiences from outside of the team that apply to the current topic being discussed.      
+
+The example must be of relevance and applied to the current topic at hand. Example can be both positive or negative, however, the application of the example must be in an attempt to motivate team members to learn from it. If the example is NOT relevant, or if the example is not applied to current topics being discussed, then the personal example is assumed to not be an attempt at mentoring and will not be marked.
+
+This item relies on the assumption that personal connections and examples are both successful mentoring strategies
+
+*Example:*
+*If the team focuses scholarly activities on research activities, and is currently discussing disseminating studies, an experience shared about previous conference presentations or published articles could be shared.*
+
+
+**Use of Names**
+
+Faculty mentor addresses mentees by name rather than general pronouns (he, she, you)
+
+The application of mentees names reaffirms the relationship of trust and respect between the two. If the name must first be identified before applied by the faculty mentor, the behavior will not be marked *(e.g. while checking attendance, the mentor checks a list of names to remind them of certain names)*. If the mentor must ask mentees for names, the use of that name within that interaction will not be marked, however, future applications of that name will be marked. 
+
+This item relies on the assumption that learning and applying names strengthens the mentor-mentee relationship.
+
+**Use of "our" or "we"**
+
+Faculty mentor refers to team activities or projects with pronouns such as "we" and "our".
+
+This could be a viable option; however, I would need to find a source that supported it! 
+
+**Asks open-ended questions**
+
+Faculty mentor asks questions that encourages students to participate. 
+
+Open-ended questions should be asked with the intent of encouraging students to critically think about related topics. Questions should be in collaboration with the upper three tiers of Bloom’s taxonomy, inviting students to analyze, evaluate, and create (for a more detailed explanation of Bloom’s taxonomy, click here). Questions that will not be marked include the following: *questions that can be answered with a yes or no, questions that can be answered without critically thinking (e.g. questions regarding current time, date, locations of events, schedule issues, etc.),* or questions that fall in the lower tiers of Bloom’s taxonomy. 
+
+This item is adapted from the four communication techniques found in Motivational Interviewing (Miller & Rollnick, 2002) (Observation Framework Handbook). It relies on the assumption that open-ended questions facilitate critical thinking skills and self-development.
+
+**Affirmations**
+
+Faculty mentor affirms team member’s actions with certain trigger words.
+
+IS THERE AN EXHAUSTIVE LIST OF CERTAIN POSITIVE TRIGGER WORDS??? 
+
+
+**Reflections**
+
+Faculty mentor responds to team members’ questions or statements in a reflective manner.
+
+A reflective response must include some form of the original statement or question posed within the faculty mentor’s response in order for the item to be marked. Item will not be marked if questions are answered or statements are addressed without reflection. 
+
+This item is adapted from the four communication techniques found in Motivational Interviewing (Miller & Rollnick, 2002) (Observation Framework Handbook). It relies on the assumption that reflecting statements or questions reinforces to the individual that they have been heard and respected. 
+
+**Smiling**
+
+Smile can be to the general audience or towards specific team members. Mentor smiles for a minimum duration of 2 seconds. Any smile lasting less than the minimum 2 second duration time will not be marked. The duration time prevents false recordings of word pronunciations or mouth movements as smiles.
+
+The item relies on the assumption that a positive mentorship environment results in, or influences individuals to, smile.
+
+**Body Posture**
+
+A more in-depth literature review will have to be done regarding specific body postures and their relative meanings toward mentor/mentee relationships. Perhaps specific body postures can be decided and measured, thus making this an operationalizable variable.
+
+

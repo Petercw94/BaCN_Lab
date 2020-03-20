@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1556213545311.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "180830976",
+    "id" : "D648A699",
+    "lastKnownWriteTime" : 1556660448,
+    "last_content_update" : 1556660448461,
+    "path" : "~/Desktop/BACN_Lab/Concept_Thresholds/Variables_concept_script.R",
+    "project_path" : "Variables_concept_script.R",
+    "properties" : {
+        "cursorPosition" : "75,4",
+        "scrollLine" : "68"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

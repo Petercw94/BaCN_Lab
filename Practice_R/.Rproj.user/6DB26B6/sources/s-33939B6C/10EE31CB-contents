@@ -1,0 +1,8 @@
+library(tidyverse)
+
+data("population")
+df = population
+
+ggplot(df, aes(country, population, color = year)) +
+  geom_point( )
+
