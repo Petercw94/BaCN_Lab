@@ -9,7 +9,7 @@ Created on Thu Apr  2 20:33:32 2020
 li = [1,2,3,2,2]
 plist = [9, 2, 5, 4, 12, 7, 8, 11, 9, 3, 7, 4, 12, 5, 4, 10, 9, 6, 9, 4]
 
-# define the sum_list function
+# write a function to find the mean of a list
 def mean_list(l):
     sum = 0
     mean = 0
@@ -30,8 +30,19 @@ def sd(l):
     for i in l:
         y += (abs(i - mean_list(l)))**2
     sdev = (y/len(l))**(1/2)
-    print(sdev)
+    #print(sdev)
+    return sdev
 
 
 
-sd(plist)
+# sd(plist)
+
+
+# write a function to convert the data into z-scores
+def zScore(l):
+    z = ()
+    for i in l:
+       z = (i-mean_list(l))/sd(l)
+       print(z)
+ 
+zScore(plist)      
