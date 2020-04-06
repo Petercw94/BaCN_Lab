@@ -87,3 +87,4 @@ def coin(ht, n):
     
     
 # Write a function for probability with multiple outcomes
+    
