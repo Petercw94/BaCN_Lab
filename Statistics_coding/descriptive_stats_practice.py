@@ -45,4 +45,36 @@ def zScore(l):
        z = (i-mean_list(l))/sd(l)
        print(z)
  
-zScore(plist)      
+#zScore(plist)      
+
+
+# Write a function for flipping a coin for probability
+def coin(ht, n):
+    from random import randrange
+    import numpy as np
+    import matplotlib.pyplot as plt
+    heads = 0
+    tails = 0
+    label = ['heads', 'tails']
+    for i in range(n):
+        if randrange(ht) == 0:
+                heads += 1
+        else: tails += 1
+    values = [heads, tails]
+    def plot_bar_x():
+    # build the bar graph
+        index = np.arange(len(label)) # index gives x axis a quantitative number
+        plt.bar(index, values) # this gives our x and y axis
+        plt.xlabel('Side of Coin', fontsize=5) # choose the label of the x-axis
+        plt.ylabel('Probability of flipping', fontsize=5) # choose the label of the y-axis
+        plt.xticks(index, label, fontsize=5, rotation=30) # the angle, wordage, and font size of ticks
+        plt.title('Probability graph of a coin flip')
+        plt.show()
+    plot_bar_x()
+    print("Heads = " + str(heads))
+    print("Tails = " + str(tails))
+        
+#coin(2, 10000)
+    
+    
+# Write a function for probability with multiple outcomes
