@@ -73,6 +73,15 @@ def coin(ht, n):
     plot_bar_x()
     print("Heads = " + str(heads))
     print("Tails = " + str(tails))
+    print("Empirical probability heads = " + str(heads/n))
+    print("Empirical probability of tails = " + str(tails/n))
+    # I can't get the next part of the function to work completely yet
+    #percentage = input("Would you like to see the probability as a percentage? (y/n): ")
+    #if percentage == "y":
+        #print("Empirical probability heads = " + str((heads/n)*100 + "%"))
+        #print("Empirical probability of tails = " + str((tails/n) * 100) + "%")
+    #else:
+        #print("Have a nice day")
         
 #coin(2, 10000)
     
