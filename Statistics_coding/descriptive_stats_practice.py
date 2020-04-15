@@ -45,4 +45,83 @@ def zScore(l):
        z = (i-mean_list(l))/sd(l)
        print(z)
  
-zScore(plist)      
+#zScore(plist)      
+
+
+# Write a function for flipping a coin for probability
+def coin(ht, n):
+    from random import randrange
+    import numpy as np
+    import matplotlib.pyplot as plt
+    heads = 0
+    tails = 0
+    label = ['heads', 'tails']
+    for i in range(n):
+        if randrange(ht) == 0:
+                heads += 1
+        else: tails += 1
+    values = [heads, tails]
+    def plot_bar_x():
+    # build the bar graph
+        index = np.arange(len(label)) # index gives x axis a quantitative number
+        plt.bar(index, values) # this gives our x and y axis
+        plt.xlabel('Side of Coin', fontsize=5) # choose the label of the x-axis
+        plt.ylabel('Probability of flipping', fontsize=5) # choose the label of the y-axis
+        plt.xticks(index, label, fontsize=5, rotation=30) # the angle, wordage, and font size of ticks
+        plt.title('Probability graph of a coin flip')
+        plt.show()
+    plot_bar_x()
+    print("Heads = " + str(heads))
+    print("Tails = " + str(tails))
+    print("Empirical probability heads = " + str(heads/n))
+    print("Empirical probability of tails = " + str(tails/n))
+    # I can't get the next part of the function to work completely yet
+    #percentage = input("Would you like to see the probability as a percentage? (y/n): ")
+    #if percentage == "y":
+        #print("Empirical probability heads = " + str((heads/n)*100 + "%"))
+        #print("Empirical probability of tails = " + str((tails/n) * 100) + "%")
+    #else:
+        #print("Have a nice day")
+        
+#coin(2, 10000)
+    
+    
+# Write a function for probability
+def dice(sides, rolls):
+    from random import randrange
+    import numpy as np
+    import matplotlib.pyplot as plt
+    one = 0
+    two = 0
+    three = 0
+    four = 0
+    five = 0
+    six = 0
+    label = ['one', 'two', 'three', 'four', 'five', 'six']
+    for i in range(rolls):
+        rand = randrange(6)
+        if rand == 0:
+            one += 1
+        elif rand == 1:
+            two += 1
+        elif rand == 2:
+            three += 1
+        elif rand == 3:
+            four += 1
+        elif rand == 4:
+            five += 1
+        else: 
+            six += 1
+    values = [one, two, three, four, five, six]
+    def plot_bar_x():
+    # build the bar graph
+        index = np.arange(len(label)) # index gives x axis a quantitative number
+        plt.bar(index, values) # this gives our x and y axis
+        plt.xlabel('Sides of die', fontsize=5) # choose the label of the x-axis
+        plt.ylabel('Probability of rolling each number', fontsize=5) # choose the label of the y-axis
+        plt.xticks(index, label, fontsize=5, rotation=30) # the angle, wordage, and font size of ticks
+        plt.title('Probability graph of rolling dice')
+        plt.show()
+    plot_bar_x()
+    
+#dice(6,1000)
