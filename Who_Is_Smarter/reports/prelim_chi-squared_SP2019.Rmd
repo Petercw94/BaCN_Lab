@@ -1,0 +1,42 @@
+---
+title: "Who is Smarter Preliminary Analysis"
+author: "Peter Williams"
+date: "4/21/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#### The Data
+The survey data used in this report was gathered from students during the Spring semester of 2019 at Utah Valley University. 
+
+#### Cleaning the Data
+Exporting data from qualtrics results in a lot of useless information (such as geographical location) that needs to be removed. Also, because the survey questions are not "forced response", a lot of elements are missing from the data set. The unneccessary variables were removed as well as the NAs with the following scripts:  
+
+* "survey_tidying_script.R"  
+
+* "removing_missing_values_SP2019.R"
+
+#### Analyzing the data
+Because we don't have data about the GPA yet, I ran a chi-squared (two-variable), to determine if their was a relationship between gender and perceived intelligence (measured with a factored question "who is smarter, you or your group member?". The results of the chi-squared are as follows:
+```{r chi-squared, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(readxl)
+library(gmodels)
+df = read.csv("../tidy_data/SP2019_survey_no.NAs.csv")
+df = df %>%
+  mutate(Who_is_smarter. = factor(Who_is_smarter.))
+
+CrossTable(df$gender2, df$Who_is_smarter., 
+           fisher = TRUE, 
+           chisq = TRUE, 
+           expected = TRUE, 
+           sresid = TRUE,
+           format = "SPSS",
+           prop.c = TRUE,
+           prop.t = FALSE,
+           prop.chisq = FALSE)
+```
+
+
