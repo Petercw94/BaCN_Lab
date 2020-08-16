@@ -1,0 +1,47 @@
+---
+title: "Who is Smarter Preliminary Analysis"
+author: "Peter Williams"
+date: "4/21/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#### The Data
+The survey data used in this report was gathered from students during the Spring semester of 2019 at Utah Valley University. 
+
+#### Cleaning the Data
+Exporting data from qualtrics results in a lot of useless information (such as geographical location) that needs to be removed. Also, because the survey questions are not "forced response", a lot of elements are missing from the data set. The unneccessary variables were removed as well as the NAs with the following scripts:  
+
+* "survey_tidying_script.R"  
+
+* "removing_missing_values_SP2019.R"
+
+#### Analyzing the data
+Because we don't have data about the GPA yet, I ran a chi-squared (two-variable), to determine if there was a relationship between gender and perceived intelligence (measured with a factored question "who is smarter, you or your group member?". The results of the chi-squared and the fisher's exactness tests are as follows:  
+
+```{r chi-squared, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(readxl)
+library(gmodels)
+df = read.csv("../tidy_data/SP2019_survey_no.NAs.csv")
+df = df %>%
+  mutate(Who_is_smarter. = factor(Who_is_smarter.))
+
+CrossTable(df$gender2, df$Who_is_smarter., 
+           fisher = TRUE, 
+           chisq = TRUE, 
+           expected = TRUE, 
+           sresid = TRUE,
+           format = "SPSS",
+           prop.c = TRUE,
+           prop.t = FALSE,
+           prop.chisq = FALSE)
+```
+  
+          
+  After examining the expected values in each column, we can see that the first assumption of a chi-squared test was met (expected values > 5, our lowest was ~95). With the assumption satisfied, the next point to examine is the chi-squared p-value (0.003792886), which indicates a p-value < 0.05, allowing us to assume there is some kind of relationship between gender and perceived intelligence. The Fisher's exact test confirms this, with a p < 0.001. It would appear from the contingency table that females (34%) are more likely to percieve themselves as less smart than males (46%).
+
+#### Next Step
+Now that a relationship has been established between gender and perceived intelligence, I would assume the next step would be to compare the genders against the grade in the class and overall GPA. This would give us more insight into whether the perceptions were validated or if they possibly had some affect on the outcome of their grades. I am not sure what the actual article examined, I still haven't been able to find it.
